@@ -17,14 +17,15 @@ RUN make check
 RUN make install
 
 WORKDIR /tmp
-RUN wget http://www.kahua.org/download/kahua/Kahua-1.0.7.3.tgz
-RUN tar xvfz Kahua-1.0.7.3.tgz
+RUN git clone https://github.com/kahua/Kahua.git
 
-WORKDIR Kahua-1.0.7.3
+WORKDIR Kahua
+RUN ./DIST gen
 RUN ./configure
 RUN make
 RUN make check
 RUN make install
+ADD kahua.conf /usr/local/etc/kahua/kahua.conf
 
 WORKDIR /work
 RUN kahua-package create site
