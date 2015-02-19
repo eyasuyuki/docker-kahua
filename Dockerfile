@@ -17,7 +17,7 @@ RUN make check
 RUN make install
 
 WORKDIR /tmp
-RUN git clone https://github.com/kahua/Kahua.git
+RUN git clone https://github.com/eyasuyuki/Kahua.git
 
 WORKDIR Kahua
 RUN ./DIST gen
@@ -25,11 +25,11 @@ RUN ./configure
 RUN make
 RUN make check
 RUN make install
-ADD kahua.conf /usr/local/etc/kahua/kahua.conf
+#ADD kahua.conf /usr/local/etc/kahua/kahua.conf
 
 WORKDIR /work
 RUN kahua-package create site
-RUN kahua-package generate hello
+RUN kahua-package generate -creator=Kahua -mail=info@kahua.org hello
 
 WORKDIR hello
 RUN ./DIST gen
