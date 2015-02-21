@@ -1,0 +1,6 @@
+(;;Each entry follow this format:
+ ;;(<type> :arguments (<arg> ...) :run-by-default <num>
+ ;;        :profile <path-to-profile-base>
+ ;;        :default-database-name <path-to-database>)
+   (hello :arguments () :run-by-default 1)
+ )
