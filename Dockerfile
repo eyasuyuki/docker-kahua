@@ -1,10 +1,10 @@
-FROM nkoguro/gauche:0.9.4
+FROM nkoguro/gauche:stable
 MAINTAINER ENDO Yasuyuki <eyasuyuki@gmail.com>
 
 RUN apt-get install -y wget git
 
 WORKDIR /tmp
-RUN git clone https://github.com/eyasuyuki/Kahua.git
+RUN git clone https://github.com/kahua/Kahua.git
 
 WORKDIR Kahua
 RUN ./DIST gen
@@ -26,5 +26,6 @@ RUN make
 RUN make install
 ADD app-servers /work/site/app-servers
 
+CMD kahua-spvr -S /work/site -H 127.0.0.1:8888
+
 EXPOSE 8888
-ENTRYPOINT kahua-spvr -S /work/site -H 127.0.0.1:8888
