@@ -26,6 +26,6 @@ RUN make
 RUN make install
 ADD app-servers /work/site/app-servers
 
-CMD kahua-spvr -S /work/site -H 127.0.0.1:8888
-
 EXPOSE 8888
+
+ENTRYPOINT kahua-spvr -S /work/site -H 8888
