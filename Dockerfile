@@ -10,7 +10,7 @@ WORKDIR Kahua
 RUN ./DIST gen
 RUN ./configure
 RUN make
-RUN make check
+#RUN make check
 RUN make install
 ADD kahua.conf /usr/local/etc/kahua/kahua.conf
 
